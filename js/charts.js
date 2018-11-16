@@ -27,7 +27,7 @@ $(document).ready(function() {
     method: "GET",
     mode: "cors"
   };
-  const yLabel;
+  let yLabel;
 
   function fetchApiData(apiUrl, param, container, label) {
     fetch(apiUrl, param)
