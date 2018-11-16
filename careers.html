@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/main.css" />
+    <title>UniStats | Career Information</title>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">
+        <a href="index.html"
+          ><i class="fas fa-graduation-cap fa-lg"></i>UNISTATS</a
+        >
+      </div>
+      <nav>
+        <ul>
+          <li><a href="universities.html">Universities</a></li>
+          <li><a href="stats.html">Statistics</a></li>
+          <li><a href="#" class="active">Careers</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <!-- Body Content -->
+    <div class="container">
+      <div class="title-section">
+        <div class="title">Career Information Search</div>
+        <div class="search-form">
+          <div class="search" method="POST" action="includes/job_search.php">
+            <input
+              type="text"
+              placeholder="Search..."
+              name="search"
+              class="search-txt"
+            />
+            <button class="search-btn career-search">
+              <i class="fas fa-search fa-lg"></i>
+            </button>
+          </div>
+          <div class="popular">
+            <strong>Popular Searches: </strong>
+            <a href="#" class="pop-tags">Computing</a>,
+            <a href="#" class="pop-tags">Law</a>,
+            <a href="#" class="pop-tags">Education</a>,
+            <a href="#" class="pop-tags">Science</a>,
+            <a href="#" class="pop-tags">Journalism</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="results">
+        <div class="err-message">Search results will display here...</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer><a href="rocrmedia.com">Copyright 2018 Ross Crawford</a></footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

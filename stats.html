@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/icon.png" />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    />
+    <!-- Taucharts CSS -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/taucharts@2/dist/taucharts.min.css"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Unistats | University Statistical Information</title>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">
+        <a href="index.html"
+          ><i class="fas fa-graduation-cap fa-lg"></i>UNISTATS</a
+        >
+      </div>
+      <nav>
+        <ul>
+          <li><a href="universities.html">Universities</a></li>
+          <li><a href="#" class="active">Statistics</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <!-- Body Content -->
+    <div class="container">
+      <div class="title-section">
+        <div class="title">Statistical Data about Universities in the UK</div>
+      </div>
+      <!-- Results -->
+      <div id="stats-results-big">
+        <div class="stat-card">
+          <div class="stat-title">
+            Number of Students Enrolled at University
+          </div>
+          <div class="stat-data"><div id="chart1" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in Information
+            and Communication Technologies programmes
+          </div>
+          <div class="stat-data"><div id="chart2" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in Education
+            programmes
+          </div>
+          <div class="stat-data"><div id="chart3" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in Natural
+            Sciences, Mathematics and Statistics programmes
+          </div>
+          <div class="stat-data"><div id="chart4" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in
+            Engineering, Manufacturing and Construction programmes
+          </div>
+          <div class="stat-data"><div id="chart5" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in Arts and
+            Humanities programmes
+          </div>
+          <div class="stat-data"><div id="chart6" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in Business,
+            Administration and Law programmes
+          </div>
+          <div class="stat-data"><div id="chart7" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in
+            Agriculture, Forestry, Fisheries and Veterinary programmes
+          </div>
+          <div class="stat-data"><div id="chart8" class="chart"></div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-title">
+            Percentage of students in tertiary education enrolled in Social
+            Sciences, Journalism and Information programmes
+          </div>
+          <div class="stat-data"><div id="chart9" class="chart"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer><a href="rocrmedia.com">Copyright 2018 Ross Crawford</a></footer>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/charts.js"></script>
+  </body>
+</html>
