@@ -101,7 +101,7 @@ $(document).ready(function() {
     var query = $(".search-txt").val();
     var count = 0;
     $.ajax({
-      url: "http://api.lmiforall.org.uk/api/v1/soc/search?q=" + query,
+      url: "https://api.lmiforall.org.uk/api/v1/soc/search?q=" + query,
       dataType: "json",
       success: function(result) {
         $("#results").empty();
@@ -127,7 +127,7 @@ $(document).ready(function() {
     var query = $(this).text();
     $(".search-txt").val(query);
     $.ajax({
-      url: "http://api.lmiforall.org.uk/api/v1/soc/search?q=" + query,
+      url: "https://api.lmiforall.org.uk/api/v1/soc/search?q=" + query,
       dataType: "json",
       success: function(result) {
         $("#results").empty();

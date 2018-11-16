@@ -1,15 +1,15 @@
 $(document).ready(function() {
   // Statistics scripts for ajax requests and rendering charts
   const url = [
-    "http://api.worldbank.org/v2/countries/GBR/indicators/SE.TER.ENRL?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F600?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F140?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F500?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F700?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F200?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F400?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F800?date=2008:2015&format=json",
-    "http://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F300?date=2008:2015&format=json"
+    "https://api.worldbank.org/v2/countries/GBR/indicators/SE.TER.ENRL?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F600?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F140?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F500?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F700?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F200?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F400?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F800?date=2008:2015&format=json",
+    "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F300?date=2008:2015&format=json"
   ];
   const containers = [
     "chart1",
