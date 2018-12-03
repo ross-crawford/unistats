@@ -39,32 +39,40 @@
     <div class="container">
       <div class="title-section">
         <div class="title">Career Information Search</div>
-        <div class="search-form">
-          <div class="search" method="POST" action="includes/job_search.php">
-            <input
-              type="text"
-              placeholder="Search..."
-              name="search"
-              class="search-txt"
-            />
-            <button class="search-btn career-search">
-              <i class="fas fa-search fa-lg"></i>
-            </button>
-          </div>
-          <div class="popular">
-            <strong>Popular Searches: </strong>
-            <a href="#" class="pop-tags">Computing</a>,
-            <a href="#" class="pop-tags">Law</a>,
-            <a href="#" class="pop-tags">Education</a>,
-            <a href="#" class="pop-tags">Science</a>,
-            <a href="#" class="pop-tags">Journalism</a>
+        <div class="search-container">
+          <div class="search-form">
+            <form class="search" id="jobsearch-form" method="POST" action="#">
+              <input
+                type="text"
+                placeholder="Search..."
+                name="search"
+                class="search-txt"
+              />
+              <button
+                class="search-btn career-search"
+                id="submit"
+                type="submit"
+                name="submit"
+              >
+                <i class="fas fa-search fa-lg"></i>
+              </button>
+            </form>
           </div>
         </div>
       </div>
 
       <!-- Results -->
       <div id="results">
-        <div class="err-message">Search results will display here...</div>
+        <div class="tag-line">Try these popular searches...</div>
+        <div class="popular">
+          <!--
+            <a href="#" class="tags pop">Computing</a>
+            <a href="#" class="tags pop">Law</a>
+            <a href="#" class="tags pop">Education</a>
+            <a href="#" class="tags pop">Science</a>
+            <a href="#" class="tags pop">Journalism</a>
+          -->
+        </div>
       </div>
     </div>
 
@@ -73,5 +81,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/career.js"></script>
   </body>
 </html>
