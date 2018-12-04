@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  // Statistics scripts for ajax requests and rendering charts
+  // Statistics urls for ajax requests and rendering charts
   const url = [
     "https://api.worldbank.org/v2/countries/GBR/indicators/SE.TER.ENRL?date=2008:2015&format=json",
     "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F600?date=2008:2015&format=json",
@@ -11,6 +11,7 @@ $(document).ready(function() {
     "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F800?date=2008:2015&format=json",
     "https://api.worldbank.org/v2/countries/GBR/indicators/UIS.FOSEP.56.F300?date=2008:2015&format=json"
   ];
+  // HTML element ID for each container stored as consts
   const containers = [
     "chart1",
     "chart2",
@@ -23,12 +24,16 @@ $(document).ready(function() {
     "chart9"
   ];
 
+  // fetch API parameters for use in fetchApiData function
   const fetchParams = {
     method: "GET",
     mode: "cors"
   };
   let yLabel;
 
+  // Function for rendering the bar charts on the page
+  // ZingChart JS library for rendering charts with API data
+  // https://www.zingchart.com/
   function fetchApiData(apiUrl, param, container, label) {
     fetch(apiUrl, param)
       .then(res => {
@@ -80,22 +85,23 @@ $(document).ready(function() {
         });
       })
       .catch(err => {
-        console.log("Error Getting Data From Worldbank API");
+        console.log(`Error Getting Data From Worldbank API: ${err}`);
       });
   }
-
+  // for loop to iterate through the urls and return a yLabel for each one
+  // only the first one which is 'Number' instead of 'Percentage'
   for (i = 0; i < url.length; i++) {
     if (i === 0) {
       yLabel = "Number of Students";
     } else {
       yLabel = "Percentage of Students";
     }
+    // Run the function and pass in parameters
     fetchApiData(url[i], fetchParams, containers[i], yLabel);
   }
 
   // slideToggle to open and close uni results expanding box
   $("#stats-results").on("click", ".stat-title", function() {
-    $(".stat-data").slideUp();
     $(this)
       .siblings()
       .slideToggle();

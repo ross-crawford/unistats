@@ -1,8 +1,8 @@
 $(document).ready(function() {
   // Mustache.js template for rendering uni information
-  let uniTemplate =
-    '<div class="uni-card"><div class="uni-name">{{name}}</div>' +
-    '<div class="uni-link">Visit the website at <a href="{{web_pages}}" target="_blank" class="yellow">{{web_pages}}</a></div></div>';
+  let uniTemplate = `<div class="uni-card"><div class="uni-name">{{name}}</div>
+    <div class="uni-link">Visit the website at <a href="{{web_pages}}" 
+    target="_blank" class="yellow">{{web_pages}}</a></div></div>`;
 
   // Render the list of universities with ajax
   $.ajax({
@@ -17,9 +17,9 @@ $(document).ready(function() {
 
   // Append search query to url and return ajax request and render uni results
   $(".uni-search").click(function() {
-    var query = $(".search-txt").val();
-    console.log(query);
-    var url = "data/data.json";
+    let query = $(".search-txt").val();
+    console.log(`Displaying results for "${query}"`);
+    const url = "data/data.json";
     var count = 0;
     $.ajax({
       url: url,

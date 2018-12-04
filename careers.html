@@ -41,7 +41,7 @@
         <div class="title">Career Information Search</div>
         <div class="search-container">
           <div class="search-form">
-            <form class="search" id="jobsearch-form" method="POST" action="#">
+            <div class="search" id="jobsearch-form">
               <input
                 type="text"
                 placeholder="Search..."
@@ -56,26 +56,21 @@
               >
                 <i class="fas fa-search fa-lg"></i>
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Results -->
       <div id="results">
-        <div class="tag-line">Try these popular searches...</div>
-        <div class="popular">
-          <!--
-            <a href="#" class="tags pop">Computing</a>
-            <a href="#" class="tags pop">Law</a>
-            <a href="#" class="tags pop">Education</a>
-            <a href="#" class="tags pop">Science</a>
-            <a href="#" class="tags pop">Journalism</a>
-          -->
-        </div>
+        <div class="tag-line popular-tag">Show Popular Searches</div>
+        <div class="popular"></div>
+        <div class="tag-line recent-tag margin-top">Show Recent Searches</div>
+        <div class="recent"></div>
       </div>
     </div>
-
+    <!-- Go to top button -->
+    <a href="#" class="gotop"><i class="fas fa-arrow-up"></i></a>
     <!-- Footer -->
     <footer><a href="rocrmedia.com">Copyright 2018 Ross Crawford</a></footer>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

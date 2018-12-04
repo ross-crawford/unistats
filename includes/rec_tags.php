@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 } 
 
 // SQL script to select top 5 search results
-$sql = 'SELECT query, counter FROM careers ORDER BY counter DESC LIMIT 5';
+$sql = 'SELECT query, date_searched FROM careers ORDER BY date_searched DESC LIMIT 5';
 // Query to db with connection
 $result = mysqli_query($conn, $sql)
 or die('Error retreiving database query');

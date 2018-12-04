@@ -13,9 +13,8 @@ $(document).ready(function() {
   });
 
   // Scroll top button (and about active link for home page)
-  let prevScrollPos = window.pageYOffset;
   window.onscroll = () => {
-    currentScrollPos = window.pageYOffset;
+    let currentScrollPos = window.pageYOffset;
     if (currentScrollPos > 600) {
       $("#about-link").addClass("active");
       $(".gotop").slideDown();

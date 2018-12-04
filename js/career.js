@@ -1,6 +1,8 @@
 $(document).ready(function() {
   // Mustache.js template for rendering popular searches
   let popSearchTemplate = `<a href="#" class="tags pop">{{query}}</a>`;
+  // Mustache.js template for rendering recent searches
+  let recSearchTemplate = `<a href="#" class="tags rec">{{query}}</a>`;
 
   // Mustache.js template for rendering job information
   let jobTemplate = `<div class="job-card">
@@ -28,75 +30,37 @@ $(document).ready(function() {
       <div class="error-ok">OK</div>
     </div>`;
 
-  popularSearches();
-  // Append search query to url and return ajax request and render job results
-  $("#jobsearch-form").submit(function(e) {
-    jobSearch();
+  // Button click for form
+  // $('.search-btn').on('click', function() {
+  //   let query = $('.search-txt')
+  // });
+  $(".popular-tag").on("click", function() {
+    popularSearches();
+  });
+  $(".recent-tag").on("click", function() {
+    recentSearches();
+  });
 
-    // $.ajax({
-    //   type: "POST",
-    //   url: "./includes/job_search.php",
-    //   cache: false,
-    //   data: {
-    //     text: search
-    //   },
-    //   success: function(response) {
-    //     console.log(input);
-    //   }
-    // });
-    // Declare request variable for use later
-    let request;
-    // Prevent default action when form submitted
-    e.preventDefault();
-    // Check if a request is in place, if so, abort it
-    if (request) {
-      request.abort();
-    }
-    // Declare form variable as this
-    let $form = $(this);
-    // Find all the inputs in the form
-    let $inputs = $form.find("input, button");
-    // Serialize the data into a string
-    let searializedData = $form.serialize();
-    // Disable inputs for now
-    $inputs.prop("disabled", true);
-    // AJAX request for POST to php file
-    request = $.ajax({
-      url: "./includes/job_search.php",
-      type: "POST",
-      data: searializedData
-    });
-    // Callback handler that will be called on success
-    request.done(function(response, textStatus, jqXHR) {
-      console.log("Hooray! It worked!");
-      console.log(searializedData);
-    });
-    // Callback handler that will be called on failure
-    request.fail(function(jqXHR, textStatus, errorThrown) {
-      console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-    // Callback handler that will be called regardless
-    // if the request failed or succeeded
-    request.always(function() {
-      // Reenable the inputs
-      $inputs.prop("disabled", false);
-    });
+  // Append search query to url and return ajax request and render job results
+  $("body").on("click", ".career-search", function() {
+    let query = $(".search-txt").val();
+    console.log(`input received as ${query}`);
+    jobSearch(query);
   });
 
   // On click to retreive soc code from data-attribute and run avgPay function
   $("#results").on("click", ".more-btn", function() {
     let soc = $(this).attr("data-attribute");
     let container = $(this);
-    console.log(`click worked to show soc code ${soc}`);
     avgPay(soc, container);
   });
 
   // Append popular search link clicked to search query and return ajax request and render results
-  $(".tags").click(function() {
+  $("#results").on("click", ".tags", function() {
     let query = $(this).text();
     $(".search-txt").val(query);
     $.ajax({
-      url: "https://api.lmiforall.org.uk/api/v1/soc/search?q=" + query,
+      url: `https://api.lmiforall.org.uk/api/v1/soc/search?q=${query}`,
       dataType: "json",
       success: function(result) {
         $("#results").empty();
@@ -123,32 +87,42 @@ $(document).ready(function() {
     });
   }
   // Render job search results from api
-  function jobSearch() {
-    let query = $(".search-txt").val();
-    let count = 0;
+  function jobSearch(query) {
+    let data = query;
+    console.log(`The function to search with the query: ${data} is running`);
     $.ajax({
-      url: "https://api.lmiforall.org.uk/api/v1/soc/search?q=" + query,
+      url: `https://api.lmiforall.org.uk/api/v1/soc/search?q=${query}`,
       dataType: "json",
       success: function(result) {
+        console.log(`the success function from the search ajax is running`);
         $("#results").empty();
+        postSearch(data);
         result.forEach(job => {
           $("#results").append(Mustache.render(jobTemplate, job));
-          count++;
-          if (count === result.length) {
-            noCareerResults();
-          }
         });
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
-        // $("#results").empty();
-        $("#results").append(Mustache.render(errorTemplate));
+        $("#results").empty();
+        $("#results").append("No results found");
       }
     });
   }
-
-  // Function which takes search query and adds it to db
-  function postSearchQuery() {}
-
+  // Function to ajax POST search query to database
+  function postSearch(query) {
+    console.log(`the post search function is running`);
+    let data = query;
+    $.ajax({
+      type: "POST",
+      url: "./includes/job_search.php",
+      data: { data: data },
+      success: function() {
+        console.log("the post search ajax is a success");
+      },
+      error: function() {
+        console.log("wtf man?");
+      }
+    });
+  }
   // Function to render the most popular searches to the page
   function popularSearches() {
     let container = $(".popular");
@@ -161,14 +135,29 @@ $(document).ready(function() {
           container.append(Mustache.render(popSearchTemplate, query));
         });
       },
-      error: console.log(`this didn't work`)
+      error: function() {
+        console.log(`this didn't work`);
+      }
+    });
+  }
+  // Function to render the most recent searches to the page
+  function recentSearches() {
+    let container = $(".recent");
+    $.ajax({
+      url: "./includes/rec_tags.php",
+      dataType: "json",
+      success: function(data) {
+        console.table(data);
+        data.forEach(query => {
+          container.append(Mustache.render(recSearchTemplate, query));
+        });
+      },
+      error: function() {
+        console.log(`this didn't work`);
+      }
     });
   }
 
-  // Function to render the most recent searches to the page
-  function recentSearchess() {
-    console.log("recent searches loaded");
-  }
   // If search string finds no career matches function
   function noCareerResults() {
     if (!$("#results").children().length > 0) {
@@ -183,6 +172,7 @@ $(document).ready(function() {
       .slideToggle();
   });
 
+  // fadeOut error dialogue when OK button clicked
   $("#results").on("click", ".error-ok", function() {
     $(".err-message").fadeOut();
   });

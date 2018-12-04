@@ -2,6 +2,7 @@
 light = #ffffff
 accent = #fbc531 */
 @import url("https://fonts.googleapis.com/css?family=Raleway");
+
 * {
   margin: 0;
   padding: 0;
@@ -96,7 +97,16 @@ header nav ul li a.active {
   margin: 4rem 100px 0;
   min-height: calc(100vh - 147px);
 }
-
+.php-error {
+  position: absolute;
+  top: 50%;
+  left: 50;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  font-weight: 900;
+  color: red;
+  z-index: 10;
+}
 /* Landing Page */
 #landing {
   height: 100vh;
@@ -272,7 +282,8 @@ header nav ul li a.active {
   float: right;
   margin-top: 1px;
 }
-.popular {
+.popular,
+.recent {
   margin-top: 2rem;
   width: 100%;
   display: flex;
@@ -286,6 +297,15 @@ header nav ul li a.active {
   display: block;
   width: 100%;
   text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#results .tag-line:hover {
+  text-decoration: underline;
+  color: #fbc531;
+}
+.margin-top {
+  margin-top: 1rem;
 }
 
 a.tags {
@@ -298,11 +318,16 @@ a.tags {
   color: #fff;
   margin: 0 1rem;
   text-decoration: none;
+  text-transform: uppercase;
   transition: all 0.5s;
 }
 a.tags.pop {
   background: #fbc531;
 }
+a.tags.rec {
+  background: #0984e3;
+}
+
 a.tags:hover {
   transform: scale(1.1);
   box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
@@ -317,7 +342,6 @@ hr {
 /* Career Search Results */
 #results {
   margin: 2rem 0;
-  min-height: 70vh;
 }
 .job-card {
   max-width: 100%;
@@ -528,7 +552,8 @@ footer a:hover {
     align-items: center;
   }
 
-  .popular {
+  .popular,
+  .recent {
     flex-direction: column;
     align-items: center;
     justify-content: center;
